@@ -2,4 +2,4 @@
 
 > "Never wake-up in darkness..."
 
-View the [Product Design Specification](Product Design Specification v1.pdf) for more information.
+View the [Product Design Specification](./Product%20Design%20Specification%20v1.pdf) for more information.
