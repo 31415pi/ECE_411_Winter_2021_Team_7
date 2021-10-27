@@ -6,7 +6,7 @@ View the [Product Design Specification](./Product%20Design%20Specification%20v1.
 
 Look at the [Project Board](https://github.com/31415pi/ECE_411_Winter_2021_Team_7/projects/1).
 
-![Sections of the projcect.](.\CAD\L1%20Decomposition.png "L1 Decompsition")
+![L1 Decomposition](/CAD/L1%20Decomposition.png)
 
 ## Parts List
 
