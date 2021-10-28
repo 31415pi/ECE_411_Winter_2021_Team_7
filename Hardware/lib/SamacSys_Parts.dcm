@@ -1,0 +1,21 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP NE555DR
+D Single Precision Timer
+K
+F http://www.ti.com/lit/ds/symlink/ne555.pdf
+$ENDCMP
+#
+$CMP ACST410-8BTR
+D STMicroelectronics, ACST410-8BTR, TRIAC, 800V 4A, Gate Trigger 1V 10mA, 3-Pin DPAK
+K
+F https://www.st.com/resource/en/datasheet/acst4.pdf
+$ENDCMP
+#
+$CMP MOC3072SR2VM
+D Triac & SCR Output 6PW RP TRIAC 6-Pin DIP Random-Phase TriacDriver Optocoupler (800 Volt Peak)
+K
+F http://www.onsemi.com/pub/Collateral/MOC3072M-D.PDF
+$ENDCMP
+#
+#End Doc Library

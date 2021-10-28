@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name SFH6286-4T)(type Legacy)(uri C:/Users/Boggy/opt/ece411-sunrise-alarm/Hardware/SFH6286-4T/SFH6286-4T.lib)(options "")(descr ""))
+  (lib (name SamacSys_Parts)(type Legacy)(uri C:/Users/Boggy/opt/ece411-sunrise-alarm/Hardware/lib/SamacSys_Parts.lib)(options "")(descr ""))
+)
