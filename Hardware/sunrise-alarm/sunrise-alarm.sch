@@ -14,17 +14,6 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L MCU_Microchip_PIC18:PIC18F26K22-xSO U?
-U 1 1 61792C0A
-P 3250 3450
-F 0 "U?" H 3250 4631 50  0000 C CNN
-F 1 "PIC18F26K22-xSO" H 3250 4540 50  0000 C CNN
-F 2 "Package_SO:SOIC-28W_7.5x17.9mm_P1.27mm" H 3450 3450 50  0001 C CNN
-F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/40001412G.pdf" H 3450 3450 50  0001 C CNN
-	1    3250 3450
-	1    0    0    -1  
-$EndComp
-$Comp
 L Converter_ACDC:IRM-05-5 PS?
 U 1 1 61797CD0
 P 1800 1450
@@ -197,16 +186,14 @@ $EndComp
 $Comp
 L power:+5V #PWR?
 U 1 1 617CDBCF
-P 2450 2850
-F 0 "#PWR?" H 2450 2700 50  0001 C CNN
-F 1 "+5V" H 2465 3023 50  0000 C CNN
-F 2 "" H 2450 2850 50  0001 C CNN
-F 3 "" H 2450 2850 50  0001 C CNN
-	1    2450 2850
+P 3250 2450
+F 0 "#PWR?" H 3250 2300 50  0001 C CNN
+F 1 "+5V" H 3265 2623 50  0000 C CNN
+F 2 "" H 3250 2450 50  0001 C CNN
+F 3 "" H 3250 2450 50  0001 C CNN
+	1    3250 2450
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	2450 2850 2550 2850
 Text Notes 8150 7650 0    50   ~ 0
 2021-10-27
 Text Notes 10600 7650 0    50   ~ 0
@@ -226,8 +213,6 @@ F 3 "" H 7250 1950 50  0001 C CNN
 $EndComp
 Text Notes 5900 2250 0    50   Italic 0
 Zero-Crossing Detector\n- Get resistor values
-Text Notes 3700 2450 0    50   Italic 0
-Pin Mapping Not Final
 $Comp
 L Device:R_US R?
 U 1 1 617D84BF
@@ -333,6 +318,131 @@ Wire Wire Line
 	7550 1750 7650 1750
 Wire Wire Line
 	7650 1750 7650 2400
+$Comp
+L power:GND #PWR?
+U 1 1 617BCF12
+P 3250 4450
+F 0 "#PWR?" H 3250 4200 50  0001 C CNN
+F 1 "GND" H 3255 4277 50  0000 C CNN
+F 2 "" H 3250 4450 50  0001 C CNN
+F 3 "" H 3250 4450 50  0001 C CNN
+	1    3250 4450
+	1    0    0    -1  
+$EndComp
 Wire Wire Line
-	7650 2400 5400 2400
+	1400 2850 1400 2800
+$Comp
+L Device:R_US R?
+U 1 1 617BE3B8
+P 1400 2650
+F 0 "R?" H 1468 2696 50  0000 L CNN
+F 1 "10K" H 1468 2605 50  0000 L CNN
+F 2 "" V 1440 2640 50  0001 C CNN
+F 3 "~" H 1400 2650 50  0001 C CNN
+	1    1400 2650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1400 2500 1400 2450
+$Comp
+L power:+5V #PWR?
+U 1 1 617BF7D0
+P 1400 2450
+F 0 "#PWR?" H 1400 2300 50  0001 C CNN
+F 1 "+5V" H 1415 2623 50  0000 C CNN
+F 2 "" H 1400 2450 50  0001 C CNN
+F 3 "" H 1400 2450 50  0001 C CNN
+	1    1400 2450
+	1    0    0    -1  
+$EndComp
+$Comp
+L Switch:SW_Push SW?
+U 1 1 617C3584
+P 1200 2850
+F 0 "SW?" H 1200 3135 50  0000 C CNN
+F 1 "SW_Push" H 1200 3044 50  0000 C CNN
+F 2 "" H 1200 3050 50  0001 C CNN
+F 3 "~" H 1200 3050 50  0001 C CNN
+	1    1200 2850
+	1    0    0    -1  
+$EndComp
+Connection ~ 1400 2850
+$Comp
+L Device:C C?
+U 1 1 617C3D3F
+P 1400 3050
+F 0 "C?" H 1515 3096 50  0000 L CNN
+F 1 "10nF" H 1515 3005 50  0000 L CNN
+F 2 "" H 1438 2900 50  0001 C CNN
+F 3 "~" H 1400 3050 50  0001 C CNN
+	1    1400 3050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1400 3250 1000 3250
+Wire Wire Line
+	1000 3250 1000 2850
+$Comp
+L power:GND #PWR?
+U 1 1 617C5B85
+P 1000 3250
+F 0 "#PWR?" H 1000 3000 50  0001 C CNN
+F 1 "GND" H 1005 3077 50  0000 C CNN
+F 2 "" H 1000 3250 50  0001 C CNN
+F 3 "" H 1000 3250 50  0001 C CNN
+	1    1000 3250
+	1    0    0    -1  
+$EndComp
+Connection ~ 1000 3250
+Wire Wire Line
+	1400 2900 1400 2850
+Wire Wire Line
+	1400 3250 1400 3200
+Wire Wire Line
+	1400 2850 2550 2850
+Text Notes 1150 3350 0    50   ~ 0
+Reset Button
+$Comp
+L MCU_Microchip_PIC18:PIC18F26K22-xSO U?
+U 1 1 61792C0A
+P 3250 3450
+F 0 "U?" H 2700 4550 50  0000 C CNN
+F 1 "PIC18F26K22-xSO" H 2750 4450 50  0000 C CNN
+F 2 "Package_SO:SOIC-28W_7.5x17.9mm_P1.27mm" H 3450 3450 50  0001 C CNN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/40001412G.pdf" H 3450 3450 50  0001 C CNN
+	1    3250 3450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3950 2650 4650 2650
+Wire Wire Line
+	4650 2650 4650 2400
+Wire Wire Line
+	4650 2400 7650 2400
+Wire Wire Line
+	3950 2750 5050 2750
+Wire Wire Line
+	3950 2850 5050 2850
+Text Label 4050 2750 0    50   ~ 0
+I2C_SCL2
+Text Label 4050 2850 0    50   ~ 0
+I2C_SDA2
+Text Label 4050 2650 0    50   ~ 0
+INT0
+Wire Wire Line
+	3950 3550 5000 3550
+Wire Wire Line
+	3950 3650 5000 3650
+Wire Wire Line
+	3950 3250 5000 3250
+Wire Wire Line
+	3950 3350 5000 3350
+Text Notes 4050 3350 0    50   ~ 0
+ICSP_DATA
+Text Notes 4050 3250 0    50   ~ 0
+ICSP_CLK
+Text Notes 4050 2950 0    50   ~ 0
+TEST_LED
+Wire Wire Line
+	3950 2950 5250 2950
 $EndSCHEMATC
