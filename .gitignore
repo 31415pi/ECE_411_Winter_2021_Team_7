@@ -1,0 +1,8 @@
+
+# Other directories
+Guides/
+Temp/
+Deliverables/
+
+# Backup Files
+*.sch-bak
