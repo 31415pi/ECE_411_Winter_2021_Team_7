@@ -14,7 +14,7 @@
 [PIC18F26K22](../Datasheets/datasheet%20PIC18F26K22%20(microcontroller).pdf)
 ```
                                  ┌────┐__┌────┐
-                    MCLR/VPP/RE3 ├  1      28 ┤ RB7/PGD  ICSP_DATA
+           PROG_EN  MCLR/VPP/RE3 ├  1      28 ┤ RB7/PGD  ICSP_DATA
                              RA0 ├  2      27 ┤ RB6/PGC  ICSP_CLK
                              RA1 ├  3      26 ┤ RB5
                              RA2 ├  4      25 ┤ RB4
@@ -41,6 +41,11 @@ Stats:
 2    I2C
 3    8-bit timers
 4    16-bit timers
+
+
+19 Free Pins. 16 7seg. 1 buzzer. 1 ac control. 1 sound.
+
+with SPI 17 free pins. 
 ```
 
 ![Additional Pin Mappings](/Firmware/PinMappings.png)
