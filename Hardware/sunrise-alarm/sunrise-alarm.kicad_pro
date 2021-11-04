@@ -235,9 +235,7 @@
   },
   "libraries": {
     "pinned_footprint_libs": [],
-    "pinned_symbol_libs": [
-      "Custom"
-    ]
+    "pinned_symbol_libs": []
   },
   "meta": {
     "filename": "sunrise-alarm.kicad_pro",
