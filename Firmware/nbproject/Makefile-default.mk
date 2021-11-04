@@ -90,7 +90,7 @@ ifneq ($(INFORMATION_MESSAGE), )
 endif
 	${MAKE}  -f nbproject/Makefile-default.mk dist/${CND_CONF}/${IMAGE_TYPE}/Firmware.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 
-MP_PROCESSOR_OPTION=18F26K22
+MP_PROCESSOR_OPTION=18F26K42
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)

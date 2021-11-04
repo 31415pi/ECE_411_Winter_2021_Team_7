@@ -15,7 +15,7 @@ Schematic located at [Firmware/Schematic](./Firmware/Schematic.pdf).
 
 | Part# (link datasheet)                                                           | Purpose                  | Source                                                          | Price |
 | -------------------------------------------------------------------------------- | ------------------------ | --------------------------------------------------------------- | ----- |
-| [PIC18F26K22](./Datasheets/datasheet%20PIC18F26K22%20(microcontroller).pdf)      | Microcontroller          | EPL                                                             | $1.50 |
+| [PIC18F26K42](./Datasheets/PIC18(L)F26-27-45-46-47-55-56-57K42-Data-Sheet-40001919G.pdf)      | Microcontroller          | EPL                                                             | $1.50 |
 | [IRM-05-5](./Datasheets/datasheet%20IRM-05%20(ACto5v%20power%20supply).pdf)      | DC Power Supply          | [Mouser](https://www.mouser.com/ProductDetail/709-IRM05-5)      | $8.81 |
 | [MOC3052TVM](./Datasheets/datasheet%20MOC3052M%20(AC%20controller).pdf)          | AC Controller            | [Mouser](https://www.mouser.com/ProductDetail/512-MOC3052SR2M)  | $1.15 |
 | [ACST410-8BTR](./Datasheets/datasheet%20ACST410%20(Overvoltage%20Protector).pdf) | AC Overvoltage Protector | [Mouser](https://www.mouser.com/ProductDetail/511-ACST410-8BTR) | $0.85 |

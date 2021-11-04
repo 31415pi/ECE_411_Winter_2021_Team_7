@@ -9,11 +9,29 @@
 
 [XC Compilers](https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-xc-compilers)
 
+### MPLABX Guide / Tips
+
+- `Ctrl-Click` on a symbol to go to definition.
+
+To configure register access `Window -> Target Memory Views -> Configuration Bits`. This will allow to generate new configuration *pragmas*.
+
+```
+FEXTOSC - LP        : Use LP 32.768KHz low power mode.
+RSTOSC  - LFINTOSC  : Use LP on reset.
+DEBUG   - ON        : Enable debugging.
+WDTE    - Off       : Disable Watch Dog Timer for dev.
+```
+
+> The configuration is set for the target board to supply its own power but no voltage has been detected on VDD. Please ensure you have your target powered up and try again.
+> Connection Failed.
+
+
+
 ## TODO
 
 - Select resistors for AC portions.
 - Check AC portions will work with 3.3v.
-- Add LED Controller. Assing LED pins.
+- Add LED Controller. Assign LED pins.
 - Check if capacitors needed on I2C.
 - 
 
@@ -40,8 +58,8 @@
 [PIC18F26K22](../Datasheets/datasheet%20PIC18F26K22%20(microcontroller).pdf)
 ```
                                  ┌────┐__┌────┐
-           PROG_EN  MCLR/VPP/RE3 ├  1      28 ┤ RB7/PGD  ICSP_DATA
-                             RA0 ├  2      27 ┤ RB6/PGC  ICSP_CLK
+           PROG_EN  MCLR/VPP/RE3 ├  1      28 ┤ RB7/ICSP_DAT PGD
+                             RA0 ├  2      27 ┤ RB6/ICSP_CLK PGC
                              RA1 ├  3      26 ┤ RB5
                              RA2 ├  4      25 ┤ RB4                ~BUZZER_EN
                              RA3 ├  5      24 ┤ RB3                 TEST_LED
@@ -51,11 +69,11 @@
                              RA7 ├  9      20 ┤ VDD
                              RA6 ├ 10      19 ┤ VSS
                              RC0 ├ 11      18 ┤ RC7
-                             RC1 ├ 12      17 ┤ RC6
-                             RC2 ├ 13      16 ┤ RC5
-                       SCL1  RC3 ├ 14      15 ┤ RC4      SDA1
+                             RC1 ├ 12      17 ┤ RC6      CTS1
+                             RC2 ├ 13      16 ┤ RC5      RX1
+                  SCK1 SCL1  RC3 ├ 14      15 ┤ RC4      SDA1 SDI1
                                  ╘════════════╛
-                                  PIC18(L)F2XK22
+                                  PIC18F26K42
 Stats:
 64K Bytes Flash
 32768 Single Word Instructions
