@@ -9,6 +9,32 @@
 
 [XC Compilers](https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-xc-compilers)
 
+## TODO
+
+- Select resistors for AC portions.
+- Check AC portions will work with 3.3v.
+- Add LED Controller. Assing LED pins.
+- Check if capacitors needed on I2C.
+- 
+
+## Revisions
+
+- v0.3 :
+	Added Gesture Sensor.
+	Switch to 3.3v supply. Modified resistors.
+	Fix test_led. Added diode.
+- v0.2 :
+    Added LED time display.
+	Added Buzzer.
+	Added Test LED.
+	Added Programing Header.
+	Added 
+- v0.1 :
+    Added PIC.
+	Added AC circuit.
+	Added Power supply. Use 5v supply lines.
+	Added Rest button.
+
 ## Device
 
 [PIC18F26K22](../Datasheets/datasheet%20PIC18F26K22%20(microcontroller).pdf)
@@ -17,8 +43,8 @@
            PROG_EN  MCLR/VPP/RE3 ├  1      28 ┤ RB7/PGD  ICSP_DATA
                              RA0 ├  2      27 ┤ RB6/PGC  ICSP_CLK
                              RA1 ├  3      26 ┤ RB5
-                             RA2 ├  4      25 ┤ RB4
-                             RA3 ├  5      24 ┤ RB3
+                             RA2 ├  4      25 ┤ RB4                ~BUZZER_EN
+                             RA3 ├  5      24 ┤ RB3                 TEST_LED
                              RA4 ├  6      23 ┤ RB2      INT2 SDA2
                              RA5 ├  7      22 ┤ RB1      INT1 SCL2 
                              VSS ├  8      21 ┤ RB0      INT0
@@ -43,7 +69,7 @@ Stats:
 4    16-bit timers
 
 
-19 Free Pins. 16 7seg. 1 buzzer. 1 ac control. 1 sound.
+19 Free Pins. 167seg. 1 buzzer. 1 ac control. 1 sound.
 
 with SPI 17 free pins. 
 ```
@@ -58,6 +84,7 @@ Mode is PGC and PGD.
 LVP bit must be enabled.
 
 24.9 Single-Supply ICSP Programming.
+![Single-Supply Programing](./SingleSupplyProgramming.png)
 
 See "Flash Memory Programming".
 
