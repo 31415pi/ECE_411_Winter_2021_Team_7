@@ -18,13 +18,16 @@ To configure register access `Window -> Target Memory Views -> Configuration Bit
 ```
 FEXTOSC - LP        : Use LP 32.768KHz low power mode.
 RSTOSC  - LFINTOSC  : Use LP on reset.
+MCLRE   -           : EXTMLCR
 DEBUG   - ON        : Enable debugging.
 WDTE    - Off       : Disable Watch Dog Timer for dev.
+LVP     - OFF       : Must Use MCLR for programing in HV programing.
 ```
 
 > The configuration is set for the target board to supply its own power but no voltage has been detected on VDD. Please ensure you have your target powered up and try again.
 > Connection Failed.
 
+`File > Project Properties` then in new window `Conf > PICkit 4`. Select `Option Categories: Power`. Here we can toggle external or internal. **Only 50mA of current provided at 5v.**
 
 
 ## TODO

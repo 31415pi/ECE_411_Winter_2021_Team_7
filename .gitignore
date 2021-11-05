@@ -5,5 +5,8 @@ Temp/
 Deliverables/
 Hardware/sunrise-alarm/sunrise-alarm-backups/
 
+# Unneeded Files
+Firmware/nbproject/Makefile-genesis.properties
+
 # Backup Files
 *.sch-bak
