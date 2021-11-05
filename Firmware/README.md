@@ -39,17 +39,13 @@ You are probably not in debug mode.
 
 You are probably not in debug mode.
 
-
-## TODO
-
-- Select resistors for AC portions.
-- Check AC portions will work with 3.3v.
-- Add LED Controller. Assign LED pins.
-- Check if capacitors needed on I2C.
-- 
-
 ## Revisions
 
+- v0.4 :
+	Schematic for LED Display.
+	*Noticed LED Display needs 5v!*
+	Add PIN assignments.
+	Added PIN assignments for gesture sensor.
 - v0.3 :
 	Added Gesture Sensor.
 	Switch to 3.3v supply. Modified resistors.
@@ -59,7 +55,6 @@ You are probably not in debug mode.
 	Added Buzzer.
 	Added Test LED.
 	Added Programing Header.
-	Added 
 - v0.1 :
     Added PIC.
 	Added AC circuit.
@@ -72,18 +67,18 @@ You are probably not in debug mode.
 ```
                                  ┌────┐__┌────┐
            PROG_EN  MCLR/VPP/RE3 ├  1      28 ┤ RB7/ICSP_DAT PGD
-                             RA0 ├  2      27 ┤ RB6/ICSP_CLK PGC
-                             RA1 ├  3      26 ┤ RB5
-                             RA2 ├  4      25 ┤ RB4                ~BUZZER_EN
-                             RA3 ├  5      24 ┤ RB3                 TEST_LED
-                             RA4 ├  6      23 ┤ RB2      INT2 SDA2
-                             RA5 ├  7      22 ┤ RB1      INT1 SCL2 
-                             VSS ├  8      21 ┤ RB0      INT0
-                             RA7 ├  9      20 ┤ VDD
-                             RA6 ├ 10      19 ┤ VSS
-                             RC0 ├ 11      18 ┤ RC7
-                             RC1 ├ 12      17 ┤ RC6      CTS1
-                             RC2 ├ 13      16 ┤ RC5      RX1
+           ~SEG_A            RA0 ├  2      27 ┤ RB6/ICSP_CLK PGC
+           ~SEG_B            RA1 ├  3      26 ┤ RB5                 *Speaker
+           ~SEG_C            RA2 ├  4      25 ┤ RB4                ~BUZZER_EN
+           ~SEG_D            RA3 ├  5      24 ┤ RB3                 TEST_LED
+           ~SEG_E            RA4 ├  6      23 ┤ RB2      INT2 SDA2  *Extra Int
+           ~SEG_F            RA5 ├  7      22 ┤ RB1      INT1 SCL2  GESTURE_INT
+                             VSS ├  8      21 ┤ RB0      INT0       AC_ZEROX_INT
+           ~SEG_G            RA7 ├  9      20 ┤ VDD
+           ~SEG_DP           RA6 ├ 10      19 ┤ VSS
+           DIGIT_A           RC0 ├ 11      18 ┤ RC7                 *Unused
+           DIGIT_B           RC1 ├ 12      17 ┤ RC6      CTS1       TB2
+           ~ALARM_EN         RC2 ├ 13      16 ┤ RC5      RX1        TB1
                   SCK1 SCL1  RC3 ├ 14      15 ┤ RC4      SDA1 SDI1
                                  ╘════════════╛
                                   PIC18F26K42
