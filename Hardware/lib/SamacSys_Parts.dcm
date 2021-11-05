@@ -18,4 +18,10 @@ K
 F http://www.onsemi.com/pub/Collateral/MOC3072M-D.PDF
 $ENDCMP
 #
+$CMP HT16K33-28SOP
+D Key-in LED Control Driver RAM I2C 28SOP Holtek HT16K33-28SOP, LED Driver 16-Segments, 5 V, 28-Pin SOP
+K
+F 
+$ENDCMP
+#
 #End Doc Library
