@@ -12,6 +12,7 @@
 ### MPLABX Guide / Tips
 
 - `Ctrl-Click` on a symbol to go to definition.
+- PICKit4 programmer has internal pull-downs of 4.7k on CLK, PDA lines.
 
 To configure register access `Window -> Target Memory Views -> Configuration Bits`. This will allow to generate new configuration *pragmas*.
 
@@ -28,6 +29,9 @@ LVP     - OFF       : Must Use MCLR for programing in HV programing.
 > Connection Failed.
 
 `File > Project Properties` then in new window `Conf > PICkit 4`. Select `Option Categories: Power`. Here we can toggle external or internal. **Only 50mA of current provided at 5v.**
+
+> Warning: The hex file has the debug bit set.  The debug bit has been cleared during load to memory.  The original hex file has not been modified.
+
 
 
 ## TODO

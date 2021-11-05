@@ -205,7 +205,7 @@
                   value="toolpack.updateoptions.uselatestoolpack"/>
         <property key="toolpack.updateoptions.packversion"
                   value="Press to select which tool pack to use"/>
-        <property key="voltagevalue" value="5.0"/>
+        <property key="voltagevalue" value="3.3"/>
       </Tool>
       <XC8-CO>
         <property key="coverage-enable" value=""/>
@@ -287,7 +287,7 @@
                   value="toolpack.updateoptions.uselatestoolpack"/>
         <property key="toolpack.updateoptions.packversion"
                   value="Press to select which tool pack to use"/>
-        <property key="voltagevalue" value="5.0"/>
+        <property key="voltagevalue" value="3.3"/>
       </pk4hybrid>
       <snap>
         <property key="AutoSelectMemRanges" value="auto"/>
