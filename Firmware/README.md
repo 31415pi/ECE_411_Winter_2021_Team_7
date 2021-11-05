@@ -30,8 +30,14 @@ LVP     - OFF       : Must Use MCLR for programing in HV programing.
 
 `File > Project Properties` then in new window `Conf > PICkit 4`. Select `Option Categories: Power`. Here we can toggle external or internal. **Only 50mA of current provided at 5v.**
 
+> Target Device ID (0x0) is an Invalid Device ID. Please check your connections to the Target Device.
+
+You are probably not in debug mode.
+
+
 > Warning: The hex file has the debug bit set.  The debug bit has been cleared during load to memory.  The original hex file has not been modified.
 
+You are probably not in debug mode.
 
 
 ## TODO
