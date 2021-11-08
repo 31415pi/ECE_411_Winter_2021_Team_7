@@ -41,25 +41,9 @@ You are probably not in debug mode.
 
 ## Revisions
 
-- v0.4 :
-	Schematic for LED Display.
-	*Noticed LED Display needs 5v!*
-	Add PIN assignments.
-	Added PIN assignments for gesture sensor.
-- v0.3 :
-	Added Gesture Sensor.
-	Switch to 3.3v supply. Modified resistors.
-	Fix test_led. Added diode.
-- v0.2 :
-    Added LED time display.
-	Added Buzzer.
-	Added Test LED.
-	Added Programing Header.
-- v0.1 :
-    Added PIC.
-	Added AC circuit.
-	Added Power supply. Use 5v supply lines.
-	Added Rest button.
+- v0.1
+	- Basic Blink functionality
+	- Prototype of AC controller on Arduino
 
 ## Device
 
