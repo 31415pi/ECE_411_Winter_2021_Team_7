@@ -24,4 +24,40 @@ K
 F 
 $ENDCMP
 #
+$CMP TXU0104BQAR
+D Translation - Voltage Levels Four channel unidirectional level shifter
+K
+F https://www.ti.com/lit/gpn/txu0104
+$ENDCMP
+#
+$CMP UA78M33CKVURG3
+D Linear Voltage Regulators 3.3 V 500mA Fix Pos Voltage Regulator
+K
+F https://www.ti.com/lit/gpn/ua78m?HQS=ti-null-null-sf-df-pf-sep-wwe&DCM=yes
+$ENDCMP
+#
+$CMP AZ1117IH-3.3TRG1
+D LDO Voltage Regulators LDO BJT HiCurr 1.35A 10Hz to 10KHz
+K
+F 
+$ENDCMP
+#
+$CMP CD74HC237M96
+D Texas Instruments CD74HC237M96, Decoder, Demultiplexer, 1-of-8, Non-Inverting, 2  6 V, 16-Pin SOIC
+K
+F http://www.ti.com/lit/gpn/cd74hc237
+$ENDCMP
+#
+$CMP ASDKDV-32.768KHZ-LR-T
+D Oscillator XO 0.032768MHz +/-25ppm 15pF CMOS/LVCMOS 55% 1.8V/2.5V/3.3V T/R
+K
+F 
+$ENDCMP
+#
+$CMP ASDK-32.768KHZ-LRT
+D Oscillator XO 0.032768MHz +/-25ppm 15pF CMOS 60% 3.3V 4-Pin SMD T/R
+K
+F https://abracon.com/Support/PackageDrawing/Oscillators/ASDK.PDF
+$ENDCMP
+#
 #End Doc Library
