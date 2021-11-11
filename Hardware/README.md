@@ -5,7 +5,8 @@ Add libraries to KiCad. <https://www.samacsys.com/kicad/>
 
 ## Revisions
 
-### v0.6
+### v0.6.1
+- Replaces standard button with actual button.
 
 - Added buttons.
 - Added AC to Main board connection. Split power lines.
