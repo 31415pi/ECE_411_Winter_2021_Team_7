@@ -60,4 +60,10 @@ K
 F https://abracon.com/Support/PackageDrawing/Oscillators/ASDK.PDF
 $ENDCMP
 #
+$CMP PTS526_SK15_SMTR2_LFS
+D Tact 5.2 x 5.2, 1.5 mm H, 260gf, G leads, No ground pin, metal actuator
+K
+F https://www.ckswitches.com/media/2780/pts526.pdf
+$ENDCMP
+#
 #End Doc Library
