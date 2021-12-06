@@ -1,0 +1,37 @@
+December 5th, 2130 - SAC board testing
+[code will not push to arduino with shield connected. probably totally screwed. solution, outside of not having to revamp the entire project in the final hour, add jumpers to all power lines from shield to components, as well as individual data lines to and from components. probably wanted to have tested each thing as it was soldered before moving on to the next solder job.]
+[ PINOUT DIAGRAM https://images.prismic.io/circuito/8e3a980f0f964cc539b4cbbba2654bb660db6f52_arduino-uno-pinout-diagram.png?auto=compress,format ]
+
+[test 00] post -	 	connect power and ensure blink sketch works.
+						PASS
+[test 01] sw1 - 		SELECT - pin a3 / 12
+						test_01.ino - 	
+							(0) onboard led glow low. no effect from button push.
+						fail
+							(1) change to pin 6. no led on power up, no effect from button push.
+						fail
+							(2) change butoonstate to low from high, initialize to high vs low. [line 45, 31]
+						fail
+							(3) change pin back to 12.
+						fail
+							(4) change pin to a3.
+						fail
+							(5) probed around. switch continuity looks fine. gnd<>gnd, vdd<>vdd looks fine. 
+						pass - keep looking
+							(6) triple check schmeatic. pin 12 on shield is pin d17/a3 on uno
+							(7) change to pin 17. no shield, light on, shield, light off. button press changes nothing. 
+						fail
+							(8) change to pin a3
+						FAIL
+							(9) Change button state./ if == low to if == high
+						FAIL
+							(A) Change to pin 17
+						FAIL
+							
+[test 02] sw2 - 		ENTER 
+[test 03] d7 - 			LED_PRGRM - PRG_IND - 25<> D10 
+						test_03.ino
+							(0) Set to pin 10 Without shield  onboard led is fine. with shield nothing
+						FAIL - Potential Short.
+							(1) Set to pin 16 Without shield onboard is fine. With shield nothing. 
+						FAIL - Likely Short.
