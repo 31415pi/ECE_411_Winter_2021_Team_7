@@ -16,3 +16,4 @@ Firmware/dist/
 # Backup Files
 *.sch-bak
 *.bak
+hardware/sunrise-alarm/build/*.zip
