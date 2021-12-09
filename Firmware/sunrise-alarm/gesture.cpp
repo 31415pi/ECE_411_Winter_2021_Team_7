@@ -53,6 +53,7 @@ void gesture_check() {
     // eGestureUp eGestureDown
     // eGestureUp eGestureDown
     // eGestureClockwise eGestureAntiClockwise
+    bool repeat = (gesture == last);
 
     if (gesture == paj.eGestureUp)
       control_event(event_next);
@@ -60,8 +61,10 @@ void gesture_check() {
       control_event(event_prev);
     if (gesture == paj.eGestureBackward && last == paj.eGestureForward)
       control_event(event_select);
-    if (gesture == paj.eGestureClockwise)
-      control_event(event_toggle);
+    if (gesture == paj.eGestureClockwise && repeat)
+      control_event(event_light_on);
+    if (gesture == paj.eGestureAntiClockwise && repeat)
+      control_event(event_light_off);
 
     last = gesture;
   }

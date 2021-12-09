@@ -115,6 +115,8 @@ enum control_event {
   event_prev,    // Could be optional. Probably nicer to have this.
   event_next,    // Change selected value.
   event_toggle,  // Toggle alarm.
+  event_light_on,
+  event_light_off,
 };
 
 // Enumarate all possible mode states.

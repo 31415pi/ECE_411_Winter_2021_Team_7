@@ -113,7 +113,8 @@ void control_mode(char new_mode, char new_submode = submode_none)
     //check_alarm(); // Disabled for now.
   }
   if (mode == mode_alarm && new_mode != mode_alarm) {
-    light_off();
+    //light_off();
+    light_on(255, 255, 255, 255); // Stays on after alarm.
     sound_off();
     alarm_glow = 0;
   }
@@ -291,6 +292,20 @@ void control_event(enum control_event event) {
     if (mode == mode_clock) {
       alarm_toggle();
       display_show();
+    }
+    break;
+
+  case event_light_on:
+    if (mode == mode_clock && !alarm_glow) {
+      log("evt toggle");
+      
+      light_transition(2, 0xFF, 0xFF, 0xFF);
+    }
+    break;
+    
+  case event_light_off:
+    if (mode == mode_clock && !alarm_glow) {
+      light_off();
     }
     break;
   }
