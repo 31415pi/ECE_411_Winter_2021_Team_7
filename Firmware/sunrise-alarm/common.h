@@ -29,8 +29,8 @@ typedef unsigned short u08;
 // Production/Debug Defines
 #ifdef PRODUCTION
 #define HHMM_SEC_PER_MIN        60
-#define INITIAL_TIME          1020 // 5:00pm 
-#define INITIAL_ALARM         1020 // 5:20pm
+#define INITIAL_TIME          1050 // 5:30pm 
+#define INITIAL_ALARM         1070 // 5:50pm
 #define INITIAL_GLOW_DURATION   15
 #define INITIAL_ALARM_SECONDS   60
 #else
