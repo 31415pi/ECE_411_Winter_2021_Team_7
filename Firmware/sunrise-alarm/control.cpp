@@ -144,6 +144,17 @@ void check_alarm() {
   }
 }
 
+void alarm_toggle() {
+  alarm_set != alarm_set;
+  alarm_glow = 0;
+  if (alarm_set) {
+  
+  } else {
+    light_off();
+  }
+  check_alarm();
+}
+
 void control_event(enum control_event event) {
   int adjust_dir = 1;
   int *adjust_hhmm = NULL;
@@ -202,7 +213,7 @@ void control_event(enum control_event event) {
     case mode_menu:
       switch (submode) {
         case submode_menu_alarm_toggle:
-          alarm_set = !alarm_set;
+          alarm_toggle();
           control_mode(mode_clock);
           break;
         case submode_menu_clock:
@@ -278,8 +289,7 @@ void control_event(enum control_event event) {
   case event_toggle:
     log("evt toggle");
     if (mode == mode_clock) {
-      alarm_set = !alarm_set;
-      if (!alarm_set) light_off();
+      alarm_toggle();
       display_show();
     }
     break;
