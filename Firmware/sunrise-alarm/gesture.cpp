@@ -2,22 +2,29 @@
 #include "common.h"
 
 //#define DISABLE_GESTURE
+//#define GESTURE_INTERRUPT
 
 #ifdef DISABLE_GESTURE
 void gesture_setup() { }
 void gesture_service() { }
 void gesture_handler() { }
 #else
-#include <DFRobot_PAJ7620U2.h> // https://github.com/DFRobot/DFRobot_PAJ7620U2
+#include "DFRobot_PAJ7620U2.h" // https://github.com/DFRobot/DFRobot_PAJ7620U2
 
 typedef DFRobot_PAJ7620U2::eGesture_t gesture_t;
 
 
+DFRobot_PAJ7620U2 paj(&Wire); // Default to A4 (SDA), A5 (SCL) pins for I2C comunicaitons.
+
+#ifdef GESTURE_INTERRUPT
 const int  paj_interrupt_pin = 3;
 
 int gesture_interrupt = 0;
-DFRobot_PAJ7620U2 paj(&Wire); // Default to A4 (SDA), A5 (SCL) pins for I2C comunicaitons.
+void gesture_handler() {
+  ++gesture_interrupt;
+}
 
+#endif
 
 
 void gesture_setup() {
@@ -27,9 +34,11 @@ void gesture_setup() {
     delay(500);
   }
   paj.setGestureHighRate(true); // High rate is less accurate.
-  
+
+  #ifdef GESTURE_INTERRUPT
   pinMode(paj_interrupt_pin, INPUT_PULLUP);
   attachInterrupt(digitalPinToInterrupt(paj_interrupt_pin), gesture_handler, FALLING);
+  #endif
 }
 
 void gesture_check() {
@@ -59,19 +68,19 @@ void gesture_check() {
 }
 
 void gesture_service() {
+  // Polling for gestures.
   static ulong ticks = millis();
-  if (0 && elapsed(&ticks, 100)) {
+  if (elapsed(&ticks, GESTURE_POLLING_INTERVAL_MS)) {
     gesture_check();
   }
-  
+
+  #ifdef GESTURE_INTERRUPT
   if (gesture_interrupt > 0) {
     --gesture_interrupt;
     Serial.println("gest interrupt");
     gesture_check();
   }
+  #endif
 }
 
-void gesture_handler() {
-  ++gesture_interrupt;
-}
 #endif

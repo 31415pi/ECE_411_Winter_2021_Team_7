@@ -63,7 +63,7 @@ void display_time(int hhmm, bool tick) {
 
   // Show display 
   oled.clearDisplay();
-  oled.invertDisplay(0);//(mode == mode_alarm) && tick);
+  oled.invertDisplay((mode == mode_alarm) && tick);
   oled.setTextColor(WHITE);
   
   oled.setTextSize(5, 3);
@@ -124,7 +124,7 @@ void display_show()
   } else if (mode == mode_adjust_alarm) {
     //display_update(alarm_hhmm);
     display_time(alarm_hhmm, clock_ss & 1);
-  } else {
+  } else { // mode_clock/mode_alarm
     //display_update(clock_hhmm);
     display_time(clock_hhmm, clock_ss & 1);
   }

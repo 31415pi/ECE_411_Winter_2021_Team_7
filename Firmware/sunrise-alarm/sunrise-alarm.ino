@@ -1,5 +1,13 @@
-
-
+// ECE411 Team7 -
+//   Julia Filipchuk <bfilipc2@pdx.edu>
+//   Maddie Klementyn <muk2@pdx.edu>
+//   Jana AlHuneidi <alhuneid@pdx.edu>
+//   Ashlei Brady <bashlei@pdx.edu>
+// Install Libarries:
+//   Adafruit SSD1306 (Use included Custom Version)
+//     Adafruit GFX (Intalled as dependency)
+//   Adafruit NeoPixel
+//   DFRobot PAJ7620U2 (Use included Custom Version)
 
 #include "common.h"
 
@@ -8,31 +16,22 @@
 //const int rtc_interrupt_pin = 2;
 //const int paj_interrupt_pin = 3;
 
-
-void test_setup() {
-  //pinMode(test_interrupt_pin, INPUT_PULLUP);
-  //attachInterrupt(digitalPinToInterrupt(test_interrupt_pin), test_handler, FALLING);
-}
+int enabled = 0;
 
 void setup() {
-  ulong started_ms, elapsed_ms;
-
-  started_ms = millis();
-  elapsed_ms = 0;
   Serial.begin(115200);
-  // Wait for 200ms for Serial to connect.
-  while(!Serial && (millis() - started_ms < 200)) {
-    elapsed_ms = millis() - started_ms;
-    if (elapsed_ms > 200)
-      break; 
-  }
-  Serial.println("Serial Started...");
-
-  test_setup();
+ 
   gesture_setup();
   control_setup();
   display_setup();
-  display_msg_next_show("started");
+  light_setup();
+
+  // Buttons and Pins
+  pinMode(pin_buzzer_pwm, OUTPUT);
+  pinMode(pin_button_ent, INPUT);
+  pinMode(pin_button_sel, INPUT);
+  pinMode(pin_led_prog, OUTPUT);
+  pinMode(pin_led_power, OUTPUT);
 }
 
 void loop() {
@@ -42,11 +41,17 @@ void loop() {
     long diff = now - trigger;
     if (diff >= 0) {
       trigger = now + diff + 1000;
-      control_event(event_tick);
+      //control_event(event_tick);
     }
+    static ulong ticks = millis();
+    if (elapsed(&ticks, 1000))
+      control_event(event_tick);
   }
 
   gesture_service();
+  button_service();
   control_service();
   display_service();
+  sound_service();
+  light_service();
 }

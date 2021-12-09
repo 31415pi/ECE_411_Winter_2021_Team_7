@@ -4,11 +4,6 @@
 #include "common.h"
 
 
-#define ADJUST_TIMEOUT_MS (1000 * 10)
-#define ADJUST_TIMEOUT    (       10)
-#define HHMM_SEC_PER_MIN 5 // 60
-#define HHMM_MAX (24*60)
-
 // Increment change time by amount. Keep to range 0 - HHMM_MAX.
 void hhmm_change(int *hhmm, int change) {
   int val = (*hhmm + change);
@@ -43,6 +38,8 @@ void control_setup()
 void control_service()
 {
   if (timeout_enabled && elapsed(&timeout_ticks, 1000)) {
+    Serial.print("timeout seconds: ");
+    Serial.println(timeout_seconds);
     if (--timeout_seconds == 0) {
       timeout_enabled = false;
       control_event(event_timeout);
@@ -56,7 +53,7 @@ void control_timeout_ms(ulong ms)
     timeout_enabled = false;
   } else {
     timeout_seconds = 1;
-    timeout_ticks = millis() + ms;
+    timeout_ticks = millis() + (1000 - ms);
     timeout_enabled = true;
   }
 }
@@ -71,12 +68,12 @@ void control_timeout(ulong seconds) {
   }
 }
 
-int clock_hhmm = 0;
-int alarm_hhmm = 2;
+int clock_hhmm = INITIAL_TIME;
+int alarm_hhmm = INITIAL_ALARM;
+int alarm_minutes_brighten = INITIAL_GLOW_DURATION; // Start glowing X minutes before alarm.
+int alarm_seconds = INITIAL_ALARM_SECONDS; // Alarm length in seconds.
 int clock_ss = 0;
-int alarm_minutes_brighten = 20; // Start glowing X minutes before alarm.
-int glow_power = 0;
-int alarm_seconds = 60; // Alarm length in seconds.
+int alarm_glow = 0;
 int alarm_set = 1;
 
 char mode = mode_clock;
@@ -92,6 +89,7 @@ void control_mode(char new_mode, char new_submode = submode_none)
   case mode_menu:
     if (new_submode == submode_menu_none) new_submode = submode_menu_end - 1;
     if (new_submode == submode_menu_end) new_submode = submode_menu_none + 1;
+    control_timeout(ADJUST_TIMEOUT);
     break;
   case mode_adjust_clock:
     if (new_submode == submode_none) new_submode = submode_adjust_end - 1;
@@ -104,6 +102,8 @@ void control_mode(char new_mode, char new_submode = submode_none)
     control_timeout(ADJUST_TIMEOUT);
     break;
   case mode_alarm:
+    light_on(255, 255, 255, 255);
+    sound_on();
     control_timeout(alarm_seconds);
     break;
   }
@@ -111,6 +111,11 @@ void control_mode(char new_mode, char new_submode = submode_none)
   // Catch Case Transitions.
   if (mode == mode_adjust_clock || mode == mode_adjust_alarm) {
     //check_alarm(); // Disabled for now.
+  }
+  if (mode == mode_alarm && new_mode != mode_alarm) {
+    light_off();
+    sound_off();
+    alarm_glow = 0;
   }
   
   mode = new_mode;
@@ -124,16 +129,17 @@ void check_alarm() {
     if (alarm_hhmm == clock_hhmm) { // Time for alarm.
       log("alrm");
       control_mode(mode_alarm);
+      alarm_glow = 0;
     }
     ulong until = hhmm_minuites_until(alarm_hhmm, clock_hhmm);
-    if (until < alarm_minutes_brighten) { // Start glowing of lights. Proportionally to distance.
+    if (!alarm_glow && until < alarm_minutes_brighten) { // Start glowing of lights. Proportionally to distance.
       // Todo: Maybe do logarithmic?
       // Todo: Check every second for smoother adjust? Or possibly adjust gradually.
       // TODO
       
-      glow_power = alarm_minutes_brighten - until;
-      Serial.print("glow ");
-      Serial.println(glow_power);
+      alarm_glow = 1;
+      light_transition(until, 0xFF, 0xFF, 0xFF);
+      Serial.print("glow");
     }
   }
 }
@@ -150,6 +156,18 @@ void control_event(enum control_event event) {
       control_event(event_tick_min);
       break; // Display show handled by internal.
     }
+    /*if (alarm_set && alarm_glow && mode != mode_adjust_alarm && mode != mode_adjust_clock) {
+      //ulong minutes = alarm_minutes_brighten - hhmm_minuites_until(alarm_hhmm, clock_hhmm);
+      //u08 power = (minutes * ((ulong)0xFFFF / alarm_minutes_brighten) + clock_ss * ((ulong)0xFFFF / HHMM_SEC_PER_MIN / alarm_minutes_brighten)) >> 8; // 0 to 255
+      //log("glow: ", minutes, " ", clock_ss, " ", power);
+      //light_on(power, 0xFF, 0xFF, 0xFF);
+    }*/
+    #ifdef WILD_ALARM
+    if (mode == mode_alarm) {
+      light_random();
+    }
+    #endif
+    
     display_show();
     break;
 
@@ -259,8 +277,11 @@ void control_event(enum control_event event) {
 
   case event_toggle:
     log("evt toggle");
-    alarm_set = !alarm_set;
-    display_show();
+    if (mode == mode_clock) {
+      alarm_set = !alarm_set;
+      if (!alarm_set) light_off();
+      display_show();
+    }
     break;
   }
 }
