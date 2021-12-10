@@ -296,15 +296,15 @@ void control_event(enum control_event event) {
     break;
 
   case event_light_on:
-    if (mode == mode_clock && !alarm_glow) {
-      log("evt toggle");
-      
-      light_transition(2, 0xFF, 0xFF, 0xFF);
+    if (mode == mode_clock && !alarm_glow && !ENABLED(LIGHT)) {
+      log("event light on");
+      light_on(2);
     }
     break;
     
   case event_light_off:
-    if (mode == mode_clock && !alarm_glow) {
+    if (mode == mode_clock && !alarm_glow && ENABLED(LIGHT)) {
+      log("event light off");
       light_off();
     }
     break;

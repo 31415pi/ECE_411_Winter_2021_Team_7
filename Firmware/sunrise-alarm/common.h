@@ -34,8 +34,8 @@ typedef unsigned short u08;
 #define INITIAL_GLOW_DURATION   15
 #define INITIAL_ALARM_SECONDS   60
 #else
-#define HHMM_SEC_PER_MIN         5 // Faster time for demo.
-#define INITIAL_TIME             0
+#define HHMM_SEC_PER_MIN         2 // Faster time for demo.
+#define INITIAL_TIME             4
 #define INITIAL_ALARM           20
 #define INITIAL_GLOW_DURATION   15
 #define INITIAL_ALARM_SECONDS   60
@@ -85,6 +85,7 @@ void button_service();
 // Light Control
 void light_off();
 void light_on(u08 brightness, u08 r, u08 g, u08 b);
+void light_on(ulong seconds);
 void light_random();
 void light_setup();
 void light_transition(ulong seconds, u08 r, u08 g, u08 b);

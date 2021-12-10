@@ -61,9 +61,9 @@ void gesture_check() {
       control_event(event_prev);
     if (gesture == paj.eGestureBackward && last == paj.eGestureForward)
       control_event(event_select);
-    if (gesture == paj.eGestureClockwise && repeat)
+    if (gesture == paj.eGestureClockwise)// && repeat)
       control_event(event_light_on);
-    if (gesture == paj.eGestureAntiClockwise && repeat)
+    if (gesture == paj.eGestureAntiClockwise)// && repeat)
       control_event(event_light_off);
 
     last = gesture;
