@@ -1,6 +1,8 @@
 # ECE411 Sunrise Alarm Clock - Team 7
-
+,
 > "Never wake-up in darkness..."
+
+Actual project completion utilized a completely different set of hardware. Updates forthcoming. The Sunrise Alarm Clock is an add on board for an arduino which allows users to interact with an OLED display clock using guestures. The board features 12 RGB SMD LEDs which are used to display time in a meaningful way, indicate confirmation of guesture input, and provide an illuminated alarm experience. A buzzer along with two analog buttons are included to facilitate traditional inputs and alarms if necessary. 
 
 View the [Product Design Specification](./Product%20Design%20Specification%20v1.pdf) for more information.
 
